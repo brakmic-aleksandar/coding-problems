@@ -20,7 +20,7 @@ print(solution1([3, 2, 1]))
 
 def solution2(a):
     """ Second solution, no division, complexity O(n)
-    Not mz solution :(
+    Not my solution :(
     """
     length = len(a)
     r = [1] * length
