@@ -15,11 +15,12 @@ def solution1(a):
         wp *= i
     return [wp/i for i in a]
 
-print(solution1([1, 2, 3, 4, 5]))
-print(solution1([3, 2, 1]))
+assert solution1([1, 2, 3, 4, 5]) == [120, 60, 40, 30, 24]
+assert solution1([3, 2, 1]) == [2, 3, 6]
 
 def solution2(a):
     """ Second solution, no division, complexity O(n)
+
     Not my solution :(
     """
     length = len(a)
@@ -40,7 +41,5 @@ def solution2(a):
 
     return r
     
-
-print(solution2([5, 2, 1, 7, 5, 4]))
-print(solution2([1, 2, 3, 4, 5]))
-print(solution2([3, 2, 1]))
+assert solution2([1, 2, 3, 4, 5]) == [120, 60, 40, 30, 24]
+assert solution2([3, 2, 1]) == [2, 3, 6]

@@ -26,10 +26,9 @@ def solution1(l, k):
 
     return False
 
-
-print(solution1([10, 15, 3, 7], 17))
-print(solution1([10, 15, 3, 7], 13))
-print(solution1([10, 15, 3, 7], 21))
+assert solution1([10, 15, 3, 7], 17)
+assert solution1([10, 15, 3, 7], 13)
+assert not solution1([10, 15, 3, 7], 21)
 
 def solution2(l, k):
     """ Second solution, complexity O(n)
@@ -45,8 +44,7 @@ def solution2(l, k):
         d[v] = 1
     return False
 
-
-print(solution2([10, 15, 3, 7], 17))
-print(solution2([10, 15, 3, 7], 13))
-print(solution2([10, 15, 3, 7], 21))
-print(solution2([10, 15, 3, 7], 20))
+assert solution1([10, 15, 3, 7], 17)
+assert solution1([10, 15, 3, 7], 13)
+assert not solution1([10, 15, 3, 7], 21)
+assert not solution2([10, 15, 3, 7], 20)
