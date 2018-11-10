@@ -33,31 +33,26 @@ def serialize(root, s = ''):
 
 def deserialize(s):
     """ Tarverses CSV string and generates binary tree, complexity O(n)"""
-
     def add(node, l):
         """ Recursively generates binary tree"""
-        #if list is empty we are done, there are no more items to deserialize
-        if l.count == 0:  
-            return
         # this part of code will continually keep adding left nodes until it gets to null node
         # once it gets to null node it means there are no more left nodes to add, 
         # afterwards it will try to create right node(if there its value it's not null, offcourse), and restart process of
         # left node generation again, node values are contained in list whose items are removed when deserialized.
-        v = l.pop(0)
+        v = next(l)
         if v != 'null':
             node.left = Node(v)
             add(node.left, l)
-        v = l.pop(0)
+        v = next(l)
         if v != 'null':
             node.right = Node(v)
             add(node.right, l)
-
-    l = s.split(",")
-    root = Node(l.pop(0))
+    
+    l = iter(s.split(","))
+    root = Node(next(l))
     add(root, l)
     return root
 
-
 node = Node('root', Node('left', Node('left.left')), Node('right'))
 assert deserialize(serialize(node)).left.left.val == 'left.left' 
-
+assert True
