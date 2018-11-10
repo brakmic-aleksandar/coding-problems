@@ -11,17 +11,22 @@ The following test should pass:
 node = Node('root', Node('left', Node('left.left')), Node('right'))
 assert deserialize(serialize(node)).left.left.val == 'left.left' """
 
+
 class Node:
-    def __init__(self, val, left = None, right = None):
+    def __init__(self, val, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
-def serialize(root, s = ''):
-    """ Tarverses binary tree recursively (from left to right) and serializes it into CSV format, complexity O(n)"""
-    #whole point of this is to avoid last comma in serialized string, 
-    #if its true and we get to return statement it means whole function and its subsequent calls are done 
-    isEntry = s == '' 
+
+def serialize(root, s=''):
+    """ Tarverses binary tree recursively (from left to right) and serializes it into CSV format.
+
+    Complexity O(n)."""
+
+    # whole point of this is to avoid last comma in serialized string,
+    # if its true and we get to return statement it means whole function and its subsequent calls are done
+    isEntry = s == ''
 
     if root is None:
         s += 'null,'
@@ -31,12 +36,17 @@ def serialize(root, s = ''):
         s = serialize(root.right, s)
     return s if not isEntry else s[:-1]
 
+
 def deserialize(s):
-    """ Tarverses CSV string and generates binary tree, complexity O(n)"""
+    """ Tarverses CSV string and generates binary tree.
+
+    Complexity O(n)"""
+
     def add(node, l):
         """ Recursively generates binary tree"""
+        
         # this part of code will continually keep adding left nodes until it gets to null node
-        # once it gets to null node it means there are no more left nodes to add, 
+        # once it gets to null node it means there are no more left nodes to add,
         # afterwards it will try to create right node(if there its value it's not null, offcourse), and restart process of
         # left node generation again, node values are contained in list whose items are removed when deserialized.
         v = next(l)
@@ -47,12 +57,13 @@ def deserialize(s):
         if v != 'null':
             node.right = Node(v)
             add(node.right, l)
-    
+
     l = iter(s.split(","))
     root = Node(next(l))
     add(root, l)
     return root
 
+
 node = Node('root', Node('left', Node('left.left')), Node('right'))
-assert deserialize(serialize(node)).left.left.val == 'left.left' 
+assert deserialize(serialize(node)).left.left.val == 'left.left'
 assert True
