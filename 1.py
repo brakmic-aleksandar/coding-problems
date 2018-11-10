@@ -53,7 +53,7 @@ def solution2(l, k):
     return False
 
 
-assert solution1([10, 15, 3, 7], 17)
-assert solution1([10, 15, 3, 7], 13)
-assert not solution1([10, 15, 3, 7], 21)
+assert solution2([10, 15, 3, 7], 17)
+assert solution2([10, 15, 3, 7], 13)
+assert not solution2([10, 15, 3, 7], 21)
 assert not solution2([10, 15, 3, 7], 20)
