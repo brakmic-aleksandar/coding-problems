@@ -21,7 +21,7 @@ struct Node
     intptr_t Both;
 };
 
-class XORTree
+class XORList
 {
     Node *_first = nullptr;
     Node *_last = nullptr;
@@ -87,17 +87,17 @@ class XORTree
 
 int main(int argc, char const *argv[])
 {
-    XORTree tree;
-    tree.Insert("0");
-    tree.Insert("1");
-    tree.Insert("2");
-    tree.Insert("3");
-    tree.Insert("4");
-    tree.Insert("5");
+    XORList list;
+    list.Insert("0");
+    list.Insert("1");
+    list.Insert("2");
+    list.Insert("3");
+    list.Insert("4");
+    list.Insert("5");
 
-    assert(tree.Get(0) == "0");
-    assert(tree.Get(3) == "3");
-    assert(tree.Get(5) == "5");
+    assert(list.Get(0) == "0");
+    assert(list.Get(3) == "3");
+    assert(list.Get(5) == "5");
 
     return 0;
 }
